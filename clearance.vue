@@ -42,23 +42,23 @@
                 <tr v-for="(item, index) in columns" :key="index">
                   <th scope="row">{{ index + 1 }}</th>
                   <td>
-                    <input type="date" class="form-control" v-model="form.date" />
+                    <input type="date" class="form-control" v-model="item.date" />
                   </td>
                   <td>
                     <input
                       type="text"
                       class="form-control"
                       placeholder="Client"
-                      v-model="form.client"
+                      v-model="item.client"
                     />
                   </td>
 
                   <td>
                     <input
-                      type="text"
+                      type="number"
                       class="form-control"
                       placeholder="Weight"
-                      v-model="form.weight"
+                      v-model="item.weight"
                     />
                   </td>
                   <td>
@@ -66,15 +66,15 @@
                       type="number"
                       class="form-control"
                       placeholder="price"
-                      v-model="form.price"
+                      v-model="item.price"
                     />
                   </td>
                   <td>
                     <input
-                      type="text"
+                      type="number"
                       class="form-control"
                       placeholder="fees"
-                      v-model="form.fees"
+                      v-model="item.fees"
                     />
                   </td>
                   <td>
@@ -82,7 +82,7 @@
                       type="text"
                       class="form-control"
                       placeholder="company"
-                      v-model="form.company"
+                      v-model="item.company"
                     />
                   </td>
                 </tr>
@@ -146,9 +146,9 @@ export default {
       {
         date: "",
         client: "",
-        weight: "",
-        price: 0,
-        fees: "",
+        weight: 0,
+        price: 9,
+        fees: 0,
         company: "",
       },
     ],
@@ -161,8 +161,8 @@ export default {
         client: "",
         weight: "",
         price: 0,
-        fees: "",
-        company: "",
+        fees: 0,
+        company: 0,
       });
     },
   },
@@ -171,7 +171,7 @@ export default {
       var total = 0
 
       this.columns.forEach(element => {
-        total += element.price
+        total += parseFloat(element.fees)
       });
 
       return total
